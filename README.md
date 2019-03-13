@@ -2,6 +2,12 @@
 
 Laravel From Scratch (Laracasts Tutorial Series)
 
+## Initial Note From Author
+
+This repo contains a project that I have followed along with from Laracasts.com. If you would like great educational resources for PHP Laravel and other technologies, please visit laracasts.com, [click here](https://laracasts.com/) to open laracasts.
+
+The purpose of the repo is to continually upload updated notes and project files on various branches as I progress through the series. If there are any issues associated with copyright claims or IP, I am happy to make this repo private on request from the original content creator. Feel free to e-mail me at: [jon@dilworth.me](mailto:jon@dilworth.me).
+
 ## Table of Contents
 
 * Laravel Template Engine: Blade
