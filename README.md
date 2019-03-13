@@ -113,6 +113,24 @@ This assumes that the `ExampleController` contains the following methods:
 
 The logic that renders the view that was originally contained within the routes file (web.php) can be migrated to these controller actions and the same behaviour can be achieved. It's just nicer using a controller as one decouples the responsibility for the logic associated with rendering a view from the routes file and moves it to a controller, which is more appropriate.
 
+### Lesson 7: Databases, Migrations
 
+Okay, so I ran into some trouble here.. I downloaded the latest version of mySQL, which is v8.x. I'm also a sequelPro user and there appears to be some compatability issues with SequelPro and the latest version(s) of mySQL. I originally thought this was due to the authentication mode, but even after enabling legacy authentication, I was still having issues where SequelPro would just crash. So, if you're following along in a similar manner, I would advise (at this time) you to download 5.7 instead of 8.x (mySQL), if you're using SequelPro on a Mac. **We even had this issue in work, and one of the guys literally changed to workbench because of it.** As this is just for educational purposes (and I'm not going to be running mySQL 8.x in production on my pet projects anyway), I'm just going to stick with 5.7.x.
 
+**Migrations**
 
+    php artisan migrate
+    php artisan migrate:rollback
+    php artisan migrate:fresh
+
+Just check out all the migrations when you run `php artisan` and choose the appropriate one.
+
+**Types of Migration**
+
+Making migrations:
+
+    php artisan make:migration create_examples_table
+
+The above will generate some boilerplate for a 'creation' migration. I believe you can do the same with updates, etc. Deletes are rollbacks. Review documentation for more details.
+
+*Fairly standard stuff, very similar to Yii2.*
