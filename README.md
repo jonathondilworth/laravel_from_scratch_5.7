@@ -93,3 +93,26 @@ However, I don't see how this is any different from:
 
 *Had a quick look through the source code, did a search for response.php, there is a base response, then a HttpResponse that extends the base. A high level response implements a trait that allows for ->with(), something like that.. I'll get back to this..*
 
+### Lesson 6: Controllers
+
+This one is fairly straight forward. To generate a controller:
+
+    php artisan make:controller ExampleController
+
+Generates some boilerplate for a controller. Then in the routes file you can do something like this:
+
+    Route::get('/', 'ExampleController@home');
+    Route::get('/about', 'ExampleController@about');
+    Route::get('/contact', 'ExampleController@contact');
+
+This assumes that the `ExampleController` contains the following methods:
+
+* home (public)
+* about (public)
+* contact (public)
+
+The logic that renders the view that was originally contained within the routes file (web.php) can be migrated to these controller actions and the same behaviour can be achieved. It's just nicer using a controller as one decouples the responsibility for the logic associated with rendering a view from the routes file and moves it to a controller, which is more appropriate.
+
+
+
+
