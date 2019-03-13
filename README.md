@@ -10,8 +10,16 @@ The purpose of the repo is to continually upload updated notes and project files
 
 ## Table of Contents
 
+**Lesson 1,2,3,4,5**
 * Laravel Template Engine: Blade
 * Routes and passing data to views via routes.
+
+**Lesson 6**
+* Passing data to views via controllers.
+* Controller generation using php artisan.
+
+**Lesson 7**
+* creating migrations
 
 ### Lesson 1,2 3 and 4:
 
