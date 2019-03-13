@@ -40,14 +40,42 @@
 // (supposedly) Readable Methodology, I don't think this is a great way of doing things.
 // As it is a nested array, the indentation is a little confusing, esp with larger data structures.
 
+// Route::get('/', function() {
+//   return view('welcome', [
+//     'tasks' => [
+//       'Finish Up Work',
+//       'E-mail University',
+//       'Construct Shelves',
+//     ],
+//   ]);
+// });
+
+// A clean, albiet: magical, approach:
+
 Route::get('/', function() {
-  return view('welcome', [
+
+  // AFAI-understand, ->with<CamelCaseName>() is parsed and 'CamelCaseName'
+  // is passed to the view as a variable containing whatever included parameter.
+
+  // return view('welcome')->withTasks([
+  //   'Finish up task for work.',
+  //   'E-mail the university timetale.',
+  //   'Consultation for Chris.',
+  // ]);
+
+  // another way of doing this would be to simply use with, this (to me) is more intuitive
+  // (and doesn't require any diving into the source to really know whats happening)
+
+  return view('welcome')->with([
+    'title' => 'Hello World',
+    'someVariable' => 'value',
     'tasks' => [
-      'Finish Up Work',
-      'E-mail University',
-      'Construct Shelves',
+      'Finish up task for work.',
+      'E-mail the university timetale.',
+      'Consultation for Chris.',
     ],
   ]);
+
 });
 
 Route::get('/contact', function() {

@@ -4,10 +4,8 @@ Laravel From Scratch (Laracasts Tutorial Series)
 
 ## Table of Contents
 
-**TODO**
-
 * Laravel Template Engine: Blade
-*  
+* Routes and passing data to views via routes.
 
 ### Lesson 1,2 3 and 4:
 
@@ -62,5 +60,30 @@ Remember you can always use `compact('variable_name')` to easily pass data to vi
 
 **It is also possible to use the mustrash braces to echo variables. `<?= $var ?>` is equivalent to: `{{ $var }}`.**
 
-**Escaping data: `{!! $var !!}`**
+The above will automatically escape the data contained with $var, in order to print the contents of $var, regardless of its intent (malicious or non-malicious), use the following notion: **`{!! $var !!}`**
+
+**Passing data to views using ->with() and variants:**
+
+    return view('view_name')->withName($name);
+
+The above will pass a variable called 'Name' with the payload $name, specified by the parameter. Here are some alternative methods:
+
+    return view('view_name')->with([
+      'key' => 'value',
+      'another_key' => [
+        'ds_value_1',
+        'ds_value_2',
+      ],
+    ]);
+
+However, I don't see how this is any different from:
+
+    return view('view_name', [
+      'key' => 'value',
+      ...
+    ]);
+
+*Note: Check to see the implementation of ->with and simply passing parameters inline through view and identify the differences. Document them here.. TODO*
+
+*Had a quick look through the source code, did a search for response.php, there is a base response, then a HttpResponse that extends the base. A high level response implements a trait that allows for ->with(), something like that.. I'll get back to this..*
 
