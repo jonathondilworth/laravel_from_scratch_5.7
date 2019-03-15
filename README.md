@@ -142,3 +142,46 @@ Making migrations:
 The above will generate some boilerplate for a 'creation' migration. I believe you can do the same with updates, etc. Deletes are rollbacks. Review documentation for more details.
 
 *Fairly standard stuff, very similar to Yii2.*
+
+### Lesson 8: Eloquent, Namespacing and MVC
+
+* Eloquent is Laravels implementation of ActiveRecord.
+* php artisan make:model SINGULAR (if table: projects, model: project)
+
+**Example Code**
+
+    // Get all projects using ActiveRecord implementation
+    // assumption: model called Project exists with namespace: App\Project
+    App\Project::all();
+    // Get first
+    App\Project::first();
+    // Get Last
+    use App\Project as Proj
+    Proj::latest()->first();
+    // craete a new Project, fairly standard stuff
+    $project = new Proj();
+    $project->title = "Hello World";
+    $project->description = "test desc";
+    // usually you'd start a transaction here
+    if($project->save()) {
+      // project saved successfully
+      // maybe return?
+    } else { 
+      /* if we're not returning above, then we can use an else clause
+         if we included a return statement above, we wouldn't need an else clause
+         its a stylistic thing, different developers have different preferences
+         some will argue that with no else clause, it's not readable, however
+         I tend to create quite a few short functions where you might have some functionality
+         such as:
+         if model saves: do something and return (if it hits this point, it bubbles up) .. do something else (otherwise)
+         see how the 'else' is implied, rather than explicit. Each to their own. /*
+      // do something else..
+    }
+    // then we get a result when we run: Proj::all(); so long as its namespaced, as above (otherwise: App\Project::all())
+
+The data structure returned by Project::all(), or any other ActiveRecord method that returns a resultset, you typically get a Collection.
+See Collection.php (Laravel source code).
+
+    App\Project::all()->map->title; // returns the title of all projects within the DB.. Handy!
+
+**Laravel Naming Convetion / coding style: PSR-4**
