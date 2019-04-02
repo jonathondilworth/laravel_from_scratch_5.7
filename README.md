@@ -196,6 +196,29 @@ Basic lesson again, but it's important to note that the 419 error you might see 
 
 Anyway, it's good to know that CSRF is implemented using a Middleware. Seems like quite a scalable solution (Middleware). Often **look for a handle method** within middleware. Convention when writing middleware: use `../../../namespace/.. as Middleware;` ... `class MyExtendedMiddleware extends Middleware { ... }`
 
-### Lesson 11: ?
+### Lesson 11: Important! Resourceful Controllers
 
-TBC
+Pretty nice function of laravel is that the boilerplate can be specified to be 'resourceful', which includes the following routes:
+
+    GET /projects (index)
+    GET /projects/create (create)
+    GET /projects/{project} (show)
+    POST /projects (store)
+    GET /projects/{project}/edit (edit)
+    PATCH /projects/{project} (update)
+    DELETE /projects/{project} (destory) 
+
+Represented by: `Route::resource('projects', 'ProjectController')`
+
+This is accomplied by using the `-r` flag when creating a controller with `php artisan`
+
+    php artisan make:controller ProjectsController -r
+
+Handy! (RESTful)
+
+Further
+
+    php artisan make:controller ProjectsController -r -m
+    # model flag -m checks if model exists, if not will ask to create
+
+

@@ -19,14 +19,30 @@ Route::get('/', function() {
 
 // Handling 'Projects'
 
-Route::get('/projects', 'ProjectsController@index');
+/*
+  GET /projects (index)
+  GET /projects/create (create)
+  GET /projects/{project} (show)
+  POST /projects (store)
+  GET /projects/{project}/edit (edit)
+  PATCH /projects/{project} (update)
+  DELETE /projects/{project} (destory) 
+*/
 
-Route::get('/projects/create', 'ProjectsController@create');
+// Route::get('/projects', 'ProjectsController@index');
 
-Route::post('/projects', 'ProjectsController@store');
+// Route::get('/projects/create', 'ProjectsController@create');
 
-Route::get('/projects/read', 'ProjectsController@read');
+// Route::post('/projects', 'ProjectsController@store');
 
-Route::get('/projects/update', 'ProjectsController@update');
+// Route::get('/projects/{project}', 'ProjectsController@show');
 
-Route::get('/projects/delete', 'ProjectsController@delete');
+// Route::patch('/projects/{project}', 'ProjectsController@update');
+
+// Route::get('/projects/{project}/edit', 'ProjectsController@edit');
+
+// Route::get('/projects/delete', 'ProjectsController@destory');
+
+// This is the same as:
+
+Route::resource('projects', 'ProjectsController');

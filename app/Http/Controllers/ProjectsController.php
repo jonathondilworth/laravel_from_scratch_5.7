@@ -41,7 +41,7 @@ class ProjectsController extends Controller
     ]);
   }
 
-  public function read($projectId)
+  public function show($projectId)
   {
     // I would imagine that you would want to encapsulate and inject the try/catch
     // plus maybe a transaction wrapper as a 'middleware' if I understand the concept
@@ -72,12 +72,17 @@ class ProjectsController extends Controller
     return view('projects.create');
   }
 
+  public function edit($projectId)
+  {
+    
+  }
+
   public function update()
   {
     return "finish this later";
   }
 
-  public function delete()
+  public function destroy()
   {
     return "finish this later";   
   }
