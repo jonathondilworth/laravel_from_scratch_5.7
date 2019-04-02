@@ -185,3 +185,17 @@ See Collection.php (Laravel source code).
     App\Project::all()->map->title; // returns the title of all projects within the DB.. Handy!
 
 **Laravel Naming Convetion / coding style: PSR-4**
+
+### Lesson 9: General Lesson
+
+...
+
+### Lesson 10: CSRF Middleware
+
+Basic lesson again, but it's important to note that the 419 error you might see thrown by the web browser is typically a CSRF token failure, CSRF isn't anything new, but the implementation in Laravel is that CSRF generation is handled by the 'middleware' - so VerifyCsrfToken is a class, that probably implements /vendor/../laravel/Middleware/.., and is registered to the app under the kernel -> middlewareGroups (which is a protected variable). AFAI understand, request comes in, hits the routing mechanism and then before the code within the destination method is executed, any registered middleware is called (probably tied as an event / trigger or something like that to the controller). I would imagine any dependency injection is kind of handled in a similar way?
+
+Anyway, it's good to know that CSRF is implemented using a Middleware. Seems like quite a scalable solution (Middleware). Often **look for a handle method** within middleware. Convention when writing middleware: use `../../../namespace/.. as Middleware;` ... `class MyExtendedMiddleware extends Middleware { ... }`
+
+### Lesson 11: ?
+
+TBC

@@ -17,4 +17,16 @@ Route::get('/', function() {
   ]);
 });
 
+// Handling 'Projects'
+
 Route::get('/projects', 'ProjectsController@index');
+
+Route::get('/projects/create', 'ProjectsController@create');
+
+Route::post('/projects', 'ProjectsController@store');
+
+Route::get('/projects/read', 'ProjectsController@read');
+
+Route::get('/projects/update', 'ProjectsController@update');
+
+Route::get('/projects/delete', 'ProjectsController@delete');
